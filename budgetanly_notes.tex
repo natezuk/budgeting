@@ -1,0 +1,37 @@
+\documentclass[11pt]{article}
+\usepackage{parskip}
+\usepackage{color}
+
+\title{Layout for code to analyze budget}
+\author{Nathaniel Zuk}
+
+\begin{document}
+\maketitle
+
+\textbf{Things that the program should be able to do:}
+
+\begin{itemize}
+\item Plot the summed transactions as a function of time: by week, by month.  Use trfilter to filter the transactions (which can also filter the range of time).
+\end{itemize}
+
+\textcolor{green}{(30-12-2018)}
+
+I had used this budgeting application while I was living in Rochester, NY.  I recently moved to Dublin, Ireland at the beginning of November, and decided that I should try a different budgeting application if I am accounting for spending from Jasmine's bank account as well.  In particular, this application is prone to errors in keeping track of bank account information, and I thought that I needed to correct those mistakes monthly.
+
+I started using YNAB, which can link directly to a bank account and keep track of transactions and account balances that way.  Turned out that was a pretty terrible way to go; I was interested in keeping track of my accounts in euros (since I'm in Europe now), but YNAB doesn't account for the conversion rate between dollars and euros when it loads transactions, even though I specified that it should use euros as the currency for my budget.  Because of that, I ended up unlinking my bank accounts after a few days.  Additionally, it requires you to update your budgets to account for overbudgeting, because it fails to subtract overbudgeted transactions from the "available to budget" amount overall.  So what I see in "available to budget" is actually an overestimate of what is actually available.  I think the way I accounted for overbudgeting, by subtracting it from what's available to budget, is the best way to go.  Lastly, YNAB doesn't give you many good options for analyzing your budget.  It is essentially built for people who are living off every last penny in their account.  I'm trying to keep track of my expenses overall so I can do long-term planning.
+
+I've started learning Flask, which is a python package for web development (uses a web server gateway interface, or WSGI).  I can use that to make this budgeting application more user friendly and versatile: accessible from a browser, able to link to bank accounts, better GUI.
+
+Also, Vrajesh (Jasmine's friend) has been working on an improved budgeting application that solves some of the problems I described earlier with YNAB, including expense analysis to help with long-term budgeting.  I should contact him about his progress with the application, but I think I will have the toolset (web development, statistical analysis) to help achieve the goals he and I are both looking for in a budgeting application.
+
+\textcolor{green}{(5-1-2018)}
+
+I added the capability of including multiple accounts of different currencies in a single budget.  The project, accounts, and transactions have their own currencies.  In order to convert between currencies (to get the overall available budget with accounts of various currencies, for example), an API call is made to fixer.io, which keeps track of these currency exchange rates using info from the European Central Bank.
+
+I should also have a way of keeping track of the expected budget per month, so that I can keep track of predicted budgets and actual expenses each month.  This could be done by having a separate set of "budget transactions" or "budget adjustments", keeping track of the dates when I have added or subtracted from a budget.
+
+\textcolor{green}{(8-1-2018)}
+
+Now, whenever I make and adjustment to one of my budgets (add, subtract), it is saved in a list of budget adjustments (called "BudgetAdjust" class).  This way I can keep track of my expected budget each month (see budgetanly.py, trbdgtcmp function).
+
+\end{document}

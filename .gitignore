@@ -1,0 +1,19 @@
+# Ignore compiled python modules
+*.pyc
+
+# Ignore temporary files
+*~
+
+# Ignore image files (plots, for example)
+*.png
+*.fig
+*.gif
+*.jpg
+
+# Ignore latex compilation files
+*.log
+*.pdf
+*.aux
+
+# Database files
+*.db

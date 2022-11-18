@@ -16,7 +16,7 @@ proj.load(bdgtnm)
 currency = proj.currency
 
 # Load the expenditures
-tr = proj.trfilter({'bdgt':bdgt})
+tr = proj.trfilter({'bdgt':bdgt,'date':[(2021,5,1),(2022,12,31)]})
 
 # Plot the monthly expenditures
 plt_nm = '_'.join(bdgt)
@@ -24,4 +24,4 @@ plt_nm = '_'.join(bdgt)
 # includes median, 25% quantile, and 75% quantile
 
 # Display the average monthly transactions
-print 'Monthly expenditure (0:s): {1:.0f} [{2:.0f} {3:.0f}]'.format(currency,md,lq,uq)
+print('Monthly expenditure (0:s): {1:.0f} [{2:.0f} {3:.0f}]'.format(currency,md,lq,uq))

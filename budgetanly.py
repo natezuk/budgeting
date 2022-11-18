@@ -76,6 +76,8 @@ def revplot(explist,inclist,pltnm,currency):
     
     # Plot the average by month
     fig, ax = plt.subplots()
+    # plot dashed line for 0
+    ax.plot(unq,np.zeros(unq.shape),'k--')
     ax.plot(unq,trbymnth,'k')
     ax.set(xlabel='Month-Year',ylabel='Revenue (' + currency + ')')
     # Create the xtick label array 'Month-Year'

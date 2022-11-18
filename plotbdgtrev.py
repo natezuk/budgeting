@@ -13,9 +13,9 @@ proj.load(bdgtnm)
 # Get the currency of the project
 currency = proj.currency
 
-# Load and plot the expenditures for 
-exptr = proj.trfilter({'type':'spend','date':[(2018,12,1),None]})
-inctr = proj.trfilter({'type':'income','date':[(2018,12,1),None]})
+# Load and plot the expenditures for
+exptr = proj.trfilter({'type':'spend','date':[(2021,5,1),(2022,12,31)]})
+inctr = proj.trfilter({'type':'income','date':[(2021,5,1),(2022,12,31)]})
 [md,lq,uq] = budgetanly.revplot(exptr,inctr,'Revenue.png',currency)
 
 print('Total revenue: {}'.format(sum(inctr)-sum(exptr)))

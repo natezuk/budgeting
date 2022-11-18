@@ -2,9 +2,8 @@
 import requests
 import json
 # This runs as soon as the program is imported
-# The current code is set up to use fixer.io's currency exchange rates
 try:
-    converter_json = requests.get('http://data.fixer.io/api/latest?access_key=<insert_access_key_here>')
+    converter_json = requests.get('http://data.fixer.io/api/latest?access_key=ddd2ed361874f31afe4275ecc929aa6d')
     CurrencyInfo = json.loads(converter_json.text)
     del converter_json
     print('Loaded currency info')
